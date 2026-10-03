@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Dental Sonrisa · Odontología Integral en Lima</title>
+  <meta name="description" content="Clínica dental moderna en Lima. Limpieza, ortodoncia, implantes, blanqueamiento y más. Reserva tu cita en línea." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0891b2',
+            'primary-light': '#06b6d4',
+            'background-dark': '#0a1929',
+            'background-card': '#0f1e2e'
+          },
+          fontFamily: {
+            display: ['Playfair Display'],
+            sans: ['Inter']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="index" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="relative min-h-[90vh] flex items-center gradient-overlay" style="background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1600&q=80'); background-size: cover; background-position: center;">
+      <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="max-w-3xl">
+          <p class="text-primary uppercase tracking-[0.3em] text-sm mb-4 font-medium flex items-center gap-2">
+            <span class="pulse-dot"></span> Aceptando nuevos pacientes
+          </p>
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-6" style="font-family: 'Playfair Display', serif;">
+            Tu sonrisa,<br/>nuestra <span class="text-primary italic">pasión</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-200 max-w-2xl mb-10 leading-relaxed">
+            Atención odontológica integral con tecnología de vanguardia y un equipo de especialistas dedicados a cuidar tu salud bucal en cada etapa.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="reserva.html" class="btn-primary text-base">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              Reservar Cita
+            </a>
+            <a href="servicios.html" class="btn-outline text-base">Ver Servicios</a>
+          </div>
+          <div class="mt-12 flex flex-wrap items-center gap-8 text-sm">
+            <div class="flex items-center gap-2">
+              <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              <span class="text-gray-300">Protocolos de bioseguridad</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span class="text-gray-300">Reserva 24/7</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+              <span class="text-gray-300">Pagos flexibles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+      </div>
+    </section>
+
+    <section class="py-20 gradient-radial">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Sobre nosotros</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Cuidando sonrisas desde hace 15 años</h2>
+            <p class="text-gray-300 leading-relaxed mb-6">En <span class="text-primary font-semibold">Clínica Dental Sonrisa</span> combinamos la calidez de un equipo humano cercano con la precisión de la tecnología más moderna en odontología.</p>
+            <p class="text-gray-300 leading-relaxed mb-8">Nuestro compromiso es ofrecerte tratamientos personalizados, indoloros y de resultados duraderos. Cada paciente es único, y por eso cada plan de tratamiento también lo es.</p>
+            <div class="grid grid-cols-3 gap-6">
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-primary" style="font-family: 'Playfair Display', serif;">15+</p>
+                <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">Años</p>
+              </div>
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-primary" style="font-family: 'Playfair Display', serif;">8K+</p>
+                <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">Pacientes</p>
+              </div>
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-primary" style="font-family: 'Playfair Display', serif;">4</p>
+                <p class="text-xs uppercase tracking-wider text-gray-400 mt-1">Especialistas</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-primary/20">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Interior de la clínica" class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute -bottom-6 -left-6 bg-background-card border border-primary/30 rounded-xl p-6 shadow-2xl max-w-[220px]">
+              <p class="text-primary text-3xl font-bold" style="font-family: 'Playfair Display', serif;">★ 4.9</p>
+              <p class="text-gray-400 text-sm mt-1">Calificación promedio de nuestros pacientes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Lo que ofrecemos</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-white" style="font-family: 'Playfair Display', serif;">Nuestros servicios destacados</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="card-hover bg-background-card border border-gray-800 rounded-xl overflow-hidden group">
+            <div class="aspect-square overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Limpieza dental"/>
+            </div>
+            <div class="p-5">
+              <h3 class="text-white font-semibold mb-1">Limpieza Dental</h3>
+              <p class="text-gray-400 text-sm">Profilaxis completa con ultrasonido</p>
+              <p class="text-primary font-bold mt-3">S/ 120</p>
+            </div>
+          </div>
+          <div class="card-hover bg-background-card border border-gray-800 rounded-xl overflow-hidden group">
+            <div class="aspect-square overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Blanqueamiento"/>
+            </div>
+            <div class="p-5">
+              <h3 class="text-white font-semibold mb-1">Blanqueamiento</h3>
+              <p class="text-gray-400 text-sm">LED profesional, hasta 8 tonos</p>
+              <p class="text-primary font-bold mt-3">S/ 450</p>
+            </div>
+          </div>
+          <div class="card-hover bg-background-card border border-gray-800 rounded-xl overflow-hidden group">
+            <div class="aspect-square overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Ortodoncia"/>
+            </div>
+            <div class="p-5">
+              <h3 class="text-white font-semibold mb-1">Ortodoncia</h3>
+              <p class="text-gray-400 text-sm">Brackets y alineadores invisibles</p>
+              <p class="text-primary font-bold mt-3">S/ 150</p>
+            </div>
+          </div>
+          <div class="card-hover bg-background-card border border-gray-800 rounded-xl overflow-hidden group">
+            <div class="aspect-square overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Implantes"/>
+            </div>
+            <div class="p-5">
+              <h3 class="text-white font-semibold mb-1">Implantes</h3>
+              <p class="text-gray-400 text-sm">Titanio de última generación</p>
+              <p class="text-primary font-bold mt-3">S/ 2,200</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a href="servicios.html" class="btn-outline">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-background-card/50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Nuestro equipo</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-white" style="font-family: 'Playfair Display', serif;">Especialistas a tu servicio</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center group">
+            <div class="aspect-square rounded-2xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-primary transition-all duration-300">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" class="w-full h-full object-cover" alt="Dra. Carolina Vega"/>
+            </div>
+            <h3 class="text-lg font-bold text-white">Dra. Carolina Vega</h3>
+            <p class="text-primary text-sm uppercase tracking-wider mt-1">Odontóloga General</p>
+            <p class="text-gray-500 text-xs mt-1">12 años de experiencia</p>
+            <div class="flex justify-center gap-1 mt-2 text-primary">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-gray-400 text-xs ml-1">4.9</span>
+            </div>
+          </div>
+          <div class="text-center group">
+            <div class="aspect-square rounded-2xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-primary transition-all duration-300">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" class="w-full h-full object-cover" alt="Dr. Mateo Salazar"/>
+            </div>
+            <h3 class="text-lg font-bold text-white">Dr. Mateo Salazar</h3>
+            <p class="text-primary text-sm uppercase tracking-wider mt-1">Endodoncista</p>
+            <p class="text-gray-500 text-xs mt-1">10 años de experiencia</p>
+            <div class="flex justify-center gap-1 mt-2 text-primary">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-gray-400 text-xs ml-1">4.8</span>
+            </div>
+          </div>
+          <div class="text-center group">
+            <div class="aspect-square rounded-2xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-primary transition-all duration-300">
+              <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80" class="w-full h-full object-cover" alt="Dra. Lucía Mendoza"/>
+            </div>
+            <h3 class="text-lg font-bold text-white">Dra. Lucía Mendoza</h3>
+            <p class="text-primary text-sm uppercase tracking-wider mt-1">Ortodoncista</p>
+            <p class="text-gray-500 text-xs mt-1">15 años de experiencia</p>
+            <div class="flex justify-center gap-1 mt-2 text-primary">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-gray-400 text-xs ml-1">5.0</span>
+            </div>
+          </div>
+          <div class="text-center group">
+            <div class="aspect-square rounded-2xl overflow-hidden mb-4 border-2 border-transparent group-hover:border-primary transition-all duration-300">
+              <img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=600&q=80" class="w-full h-full object-cover" alt="Dra. Isabel Ramírez"/>
+            </div>
+            <h3 class="text-lg font-bold text-white">Dra. Isabel Ramírez</h3>
+            <p class="text-primary text-sm uppercase tracking-wider mt-1">Odontopediatra</p>
+            <p class="text-gray-500 text-xs mt-1">8 años de experiencia</p>
+            <div class="flex justify-center gap-1 mt-2 text-primary">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              <span class="text-gray-400 text-xs ml-1">4.9</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Testimonios</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-white" style="font-family: 'Playfair Display', serif;">Lo que dicen nuestros pacientes</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-background-card border border-gray-800 rounded-xl p-7">
+            <div class="flex gap-1 text-primary mb-4">★★★★★</div>
+            <p class="text-gray-300 leading-relaxed mb-6">"Llevo 2 años con mi ortodoncia y los resultados son increíbles. La Dra. Mendoza explica cada paso del proceso y siempre me siento bien atendida."</p>
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80');"></div>
+              <div>
+                <p class="text-white font-semibold">Carolina M.</p>
+                <p class="text-gray-500 text-xs">Paciente desde 2022</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-background-card border border-primary/30 rounded-xl p-7 relative">
+            <span class="absolute top-4 right-4 text-primary text-3xl" style="font-family: 'Playfair Display', serif;">"</span>
+            <div class="flex gap-1 text-primary mb-4">★★★★★</div>
+            <p class="text-gray-300 leading-relaxed mb-6">"El blanqueamiento me cambió la sonrisa. La clínica es súper moderna, limpia y el equipo es muy profesional. 100% recomendada."</p>
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80');"></div>
+              <div>
+                <p class="text-white font-semibold">Roberto D.</p>
+                <p class="text-gray-500 text-xs">Paciente desde 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-7">
+            <div class="flex gap-1 text-primary mb-4">★★★★★</div>
+            <p class="text-gray-300 leading-relaxed mb-6">"Reservar por la web fue muy fácil y llegué sin esperas. Mis hijos ya no le temen al dentista gracias a la paciencia de la Dra. Ramírez."</p>
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80');"></div>
+              <div>
+                <p class="text-white font-semibold">Andrés R.</p>
+                <p class="text-gray-500 text-xs">Paciente desde 2021</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 tooth-pattern">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Bioseguridad</h3>
+            <p class="text-gray-400 text-sm">Esterilización clase B y protocolos estrictos</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Tecnología</h3>
+            <p class="text-gray-400 text-sm">Rayos X digitales y escáner intraoral 3D</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Trato humano</h3>
+            <p class="text-gray-400 text-sm">Atención cercana y empática</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Financiamiento</h3>
+            <p class="text-gray-400 text-sm">Cuotas sin intereses con todas las tarjetas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-background-card/40 border-y border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Horario</h3>
+            <p class="text-gray-400 text-sm">Lun a Vie: 9:00 - 20:00<br/>Sáb: 9:00 - 14:00</p>
+          </div>
+          <div>
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Ubicación</h3>
+            <p class="text-gray-400 text-sm">Av. Javier Prado Este 456<br/>San Isidro, Lima</p>
+          </div>
+          <div>
+            <svg class="h-10 w-10 text-primary mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <h3 class="text-white font-semibold mb-1">Contacto</h3>
+            <p class="text-gray-400 text-sm">+51 999 444 222<br/>hola@clinicasonrisa.pe</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 text-balance" style="font-family: 'Playfair Display', serif;">¿Listo para tu <span class="text-primary italic">mejor sonrisa</span>?</h2>
+        <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">Reserva tu cita en menos de un minuto y descubre por qué somos la clínica dental preferida en Lima.</p>
+        <a href="reserva.html" class="btn-primary text-lg">Reservar mi cita ahora</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+</body>
+</html>

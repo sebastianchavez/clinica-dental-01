@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="contacto" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-20 border-b border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Estamos para ayudarte</p>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Contáctanos</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">Escríbenos, visítanos o llámanos. Estaremos encantados de atenderte y resolver todas tus dudas.</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div class="bg-background-card border border-gray-800 rounded-2xl p-8">
+            <h2 class="text-2xl font-bold text-white mb-2" style="font-family: 'Playfair Display', serif;">Envíanos un mensaje</h2>
+            <p class="text-gray-400 text-sm mb-6">Te responderemos en menos de 24 horas hábiles.</p>
+            <form id="contactForm" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">Nombre completo</label>
+                  <input type="text" required class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Juan Pérez"/>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">Teléfono</label>
+                  <input type="tel" class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="+51 999 000 000"/>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                <input type="email" required class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="tu@email.com"/>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Asunto</label>
+                <select required class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors">
+                  <option value="">Selecciona un asunto</option>
+                  <option>Consulta sobre tratamientos</option>
+                  <option>Información de precios y financiamiento</option>
+                  <option>Reagendar cita</option>
+                  <option>Atención de emergencia</option>
+                  <option>Felicitaciones o sugerencias</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Mensaje</label>
+                <textarea required rows="5" class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full">
+                Enviar mensaje
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-6">
+            <div class="bg-background-card border border-gray-800 rounded-2xl overflow-hidden h-72">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.45!2d-77.028!3d-12.092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8b4f0e0e0e1%3A0x0!2sAv.%20Javier%20Prado%20Este%20456!5e0!3m2!1ses-419!2spe!4v1700000000000" width="100%" height="100%" style="border:0; filter: grayscale(40%) contrast(1.1) brightness(0.8);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-background-card border border-gray-800 rounded-xl p-5">
+                <svg class="h-7 w-7 text-primary mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <h3 class="text-white font-semibold mb-1">Ubicación</h3>
+                <p class="text-gray-400 text-sm">Av. Javier Prado Este 456<br/>San Isidro, Lima</p>
+              </div>
+              <div class="bg-background-card border border-gray-800 rounded-xl p-5">
+                <svg class="h-7 w-7 text-primary mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                <h3 class="text-white font-semibold mb-1">Teléfono</h3>
+                <p class="text-gray-400 text-sm">+51 999 444 222<br/>+51 999 444 333</p>
+              </div>
+              <div class="bg-background-card border border-gray-800 rounded-xl p-5">
+                <svg class="h-7 w-7 text-primary mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <h3 class="text-white font-semibold mb-1">Email</h3>
+                <p class="text-gray-400 text-sm">hola@clinicasonrisa.pe<br/>citas@clinicasonrisa.pe</p>
+              </div>
+              <div class="bg-background-card border border-gray-800 rounded-xl p-5">
+                <svg class="h-7 w-7 text-primary mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="text-white font-semibold mb-1">Horario</h3>
+                <p class="text-gray-400 text-sm">Lun a Vie: 9:00 - 20:00<br/>Sáb: 9:00 - 14:00</p>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30 rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="text-white font-semibold">Reserva más rápido</h3>
+              </div>
+              <p class="text-gray-300 text-sm mb-4">Para reservar tu cita de inmediato, usa nuestro sistema online y obtén confirmación instantánea.</p>
+              <a href="reserva.html" class="btn-primary text-sm">Ir a reservar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        UI.toast('Mensaje enviado correctamente. Te responderemos pronto.');
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>

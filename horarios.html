@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horarios · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="horarios" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-20 border-b border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Estamos para atenderte</p>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Nuestros horarios</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">Reserva en línea cualquier día y horario disponible. También atendemos urgencias.</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div class="bg-background-card border border-gray-800 rounded-2xl overflow-hidden">
+          <div id="horarioList"></div>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-background-card border border-primary/30 rounded-xl p-6 text-center">
+            <div class="inline-flex h-12 w-12 rounded-full bg-primary/10 border border-primary/30 items-center justify-center mb-3">
+              <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h3 class="text-white font-semibold mb-1">Hoy</h3>
+            <p class="text-sm" id="estadoHoy"></p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6 text-center">
+            <div class="inline-flex h-12 w-12 rounded-full bg-primary/10 border border-primary/30 items-center justify-center mb-3">
+              <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            </div>
+            <h3 class="text-white font-semibold mb-1">Emergencias</h3>
+            <p class="text-sm text-gray-400">Llámanos:<br/><span class="text-primary font-mono font-bold">+51 999 444 222</span></p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6 text-center">
+            <div class="inline-flex h-12 w-12 rounded-full bg-primary/10 border border-primary/30 items-center justify-center mb-3">
+              <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            </div>
+            <h3 class="text-white font-semibold mb-1">Reserva online</h3>
+            <p class="text-sm text-gray-400">Disponible las 24 horas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-background-card/40 border-y border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-10" style="font-family: 'Playfair Display', serif;">Información importante</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+              </div>
+              <h3 class="text-white font-semibold">Feriados</h3>
+            </div>
+            <p class="text-gray-400 text-sm">No atendemos en feriados nacionales. Los días previos y posteriores tienen alta demanda, te recomendamos reservar con anticipación.</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <h3 class="text-white font-semibold">Puntualidad</h3>
+            </div>
+            <p class="text-gray-400 text-sm">Te pedimos llegar 10 minutos antes de tu cita para completar los formularios. Si llegas tarde más de 15 minutos, podemos reprogramar.</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <h3 class="text-white font-semibold">Cancelaciones</h3>
+            </div>
+            <p class="text-gray-400 text-sm">Puedes cancelar o anular tu reserva sin costo hasta 24 horas antes. Después de ese plazo, se cobra el 30% del servicio.</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+              </div>
+              <h3 class="text-white font-semibold">Urgencias 24/7</h3>
+            </div>
+            <p class="text-gray-400 text-sm">¿Dolor intenso o trauma dental? Llámanos al <span class="text-primary font-bold">+51 999 444 222</span> y un especialista te atenderá de inmediato.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">¿No encuentras horario disponible?</h2>
+        <p class="text-gray-300 mb-6 max-w-2xl mx-auto">Llámanos o escríbenos por WhatsApp y encontramos un espacio para ti lo antes posible.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="reserva.html" class="btn-primary">Reservar en línea</a>
+          <a href="contacto.html" class="btn-outline">Contactar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      const dayLabels = { lunes: 'Lunes', martes: 'Martes', miercoles: 'Miércoles', jueves: 'Jueves', viernes: 'Viernes', sabado: 'Sábado', domingo: 'Domingo' };
+      const order = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
+      const todayKey = (() => {
+        const d = new Date().getDay();
+        return ['domingo','lunes','martes','miercoles','jueves','viernes','sabado'][d];
+      })();
+
+      const listEl = document.getElementById('horarioList');
+      listEl.innerHTML = order.map(key => {
+        const h = HORARIOS[key];
+        const isToday = key === todayKey;
+        return `
+          <div class="grid grid-cols-12 gap-4 px-6 py-5 items-center ${isToday ? 'bg-primary/5' : ''} ${key !== 'domingo' ? 'border-b border-gray-800' : ''}">
+            <div class="col-span-4 flex items-center gap-2">
+              <span class="text-white font-semibold ${isToday ? 'text-primary' : ''}">${dayLabels[key]}</span>
+              ${isToday ? '<span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary text-black font-bold">Hoy</span>' : ''}
+            </div>
+            <div class="col-span-5 text-sm">
+              ${h.abierto ? `<span class="text-gray-200">${h.desde} – ${h.hasta}</span>` : '<span class="text-red-400">Cerrado</span>'}
+            </div>
+            <div class="col-span-3 text-right">
+              ${h.abierto
+                ? '<span class="text-xs px-2 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Abierto</span>'
+                : '<span class="text-xs px-2 py-1 rounded-full bg-gray-500/20 text-gray-400 border border-gray-500/30">Cerrado</span>'}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const now = new Date();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      const h = HORARIOS[todayKey];
+      const el = document.getElementById('estadoHoy');
+      if (!h.abierto) {
+        el.innerHTML = '<span class="text-red-400 font-semibold">Cerrado</span>';
+      } else {
+        const [hs, ms] = h.desde.split(':').map(Number);
+        const [he, me] = h.hasta.split(':').map(Number);
+        const from = hs * 60 + ms, to = he * 60 + me;
+        if (currentMinutes < from) {
+          el.innerHTML = `<span class="text-yellow-400 font-semibold">Abre a las ${h.desde}</span>`;
+        } else if (currentMinutes >= to) {
+          el.innerHTML = '<span class="text-red-400 font-semibold">Cerrado</span>';
+        } else {
+          el.innerHTML = `<span class="text-cyan-300 font-semibold">Abierto · ${h.desde} – ${h.hasta}</span>`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

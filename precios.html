@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precios · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="precios" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-20 border-b border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Inversión en tu sonrisa</p>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Lista de precios</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">Precios transparentes y competitivos. Aceptamos efectivo, tarjeta, Yape y Plin. Financiamiento disponible.</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-2 justify-center mb-10" id="catBtns"></div>
+        <div class="bg-background-card border border-gray-800 rounded-2xl overflow-hidden">
+          <div class="hidden md:grid grid-cols-12 gap-4 px-6 py-4 bg-background-dark border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400 font-semibold">
+            <div class="col-span-5">Servicio</div>
+            <div class="col-span-3">Categoría</div>
+            <div class="col-span-2">Duración</div>
+            <div class="col-span-2 text-right">Precio</div>
+          </div>
+          <div id="preciosBody" class="divide-y divide-gray-800"></div>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-6">* Precios incluyen consulta de evaluación. Los tratamientos complejos pueden variar según el caso.</p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-background-card/40 border-y border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Preguntas frecuentes</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white" style="font-family: 'Playfair Display', serif;">Resolvemos tus dudas</h2>
+        </div>
+        <div class="max-w-3xl mx-auto space-y-3">
+          <details class="bg-background-card border border-gray-800 rounded-xl p-5 group">
+            <summary class="cursor-pointer flex items-center justify-between font-semibold text-white">
+              ¿Aceptan seguros dentales?
+              <svg class="h-5 w-5 text-primary transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">Trabajamos con los principales seguros dentales: Pacífico, Rimac, Mapfre y La Positiva. También atendemos pacientes particulares con tarifas preferenciales.</p>
+          </details>
+          <details class="bg-background-card border border-gray-800 rounded-xl p-5 group">
+            <summary class="cursor-pointer flex items-center justify-between font-semibold text-white">
+              ¿Ofrecen financiamiento?
+              <svg class="h-5 w-5 text-primary transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">Sí. Puedes dividir el pago de tratamientos mayores (ortodoncia, implantes) hasta en 12 cuotas sin intereses con tarjeta de crédito. También aceptamos pagos parciales según etapas del tratamiento.</p>
+          </details>
+          <details class="bg-background-card border border-gray-800 rounded-xl p-5 group">
+            <summary class="cursor-pointer flex items-center justify-between font-semibold text-white">
+              ¿Cuáles son los métodos de pago aceptados?
+              <svg class="h-5 w-5 text-primary transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">Efectivo, todas las tarjetas de crédito/débito (Visa, MasterCard, AmEx, Diners), Yape, Plin y transferencia bancaria. Los precios ya incluyen IGV y emiten boleta o factura.</p>
+          </details>
+          <details class="bg-background-card border border-gray-800 rounded-xl p-5 group">
+            <summary class="cursor-pointer flex items-center justify-between font-semibold text-white">
+              ¿Cuánto dura una consulta de diagnóstico?
+              <svg class="h-5 w-5 text-primary transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">La consulta inicial dura aproximadamente 30 minutos. Incluye examen clínico, radiografía periapcial y explicación detallada del plan de tratamiento con presupuesto.</p>
+          </details>
+          <details class="bg-background-card border border-gray-800 rounded-xl p-5 group">
+            <summary class="cursor-pointer flex items-center justify-between font-semibold text-white">
+              ¿Atienden emergencias dentales?
+              <svg class="h-5 w-5 text-primary transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <p class="mt-3 text-gray-300 text-sm leading-relaxed">Sí. Para dolor agudo, trauma o sangrado, llámanos al +51 999 444 222 y te asignaremos un espacio el mismo día en horario de atención.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30 rounded-2xl p-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">¿Listo para empezar?</h2>
+          <p class="text-gray-300 mb-6 max-w-2xl mx-auto">Reserva tu cita hoy y da el primer paso hacia la sonrisa que mereces.</p>
+          <a href="reserva.html" class="btn-primary">Reservar ahora</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      let currentCat = 'todas';
+
+      const categorias = ['todas', ...new Set(SERVICIOS.map(s => s.categoria))];
+      const labels = { todas: 'Todos', preventiva: 'Preventiva', estetica: 'Estética', restauracion: 'Restauración', endodoncia: 'Endodoncia', ortodoncia: 'Ortodoncia', cirugia: 'Cirugía', implantes: 'Implantes', pediatria: 'Pediatría' };
+      const catBtns = document.getElementById('catBtns');
+      catBtns.innerHTML = categorias.map(c => `
+        <button data-cat="${c}" class="cat-btn px-5 py-2 rounded-full text-sm border ${currentCat === c ? 'border-primary bg-primary text-black font-semibold' : 'border-gray-700 text-gray-300 hover:border-primary font-medium'}">${labels[c] || c}</button>
+      `).join('');
+
+      function render() {
+        const list = currentCat === 'todas' ? SERVICIOS : SERVICIOS.filter(s => s.categoria === currentCat);
+        document.getElementById('preciosBody').innerHTML = list.map(s => `
+          <div class="grid grid-cols-12 gap-4 px-6 py-5 hover:bg-background-dark/50 transition-colors items-center">
+            <div class="col-span-12 md:col-span-5">
+              <p class="text-white font-semibold">${s.nombre}</p>
+              <p class="text-gray-500 text-xs mt-0.5 md:hidden">${UI.categoriaLabel(s.categoria)} · ${s.duracion} min</p>
+            </div>
+            <div class="hidden md:block col-span-3">
+              <span class="text-xs uppercase tracking-wider px-2 py-1 rounded-full border border-primary/30 text-primary bg-primary/5">${UI.categoriaLabel(s.categoria)}</span>
+            </div>
+            <div class="hidden md:block col-span-2 text-gray-400 text-sm">${s.duracion} min</div>
+            <div class="col-span-12 md:col-span-2 text-right">
+              <span class="text-primary text-xl font-bold" style="font-family: 'Playfair Display', serif;">${UI.formatPrice(s.precio)}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      render();
+
+      catBtns.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cat-btn');
+        if (!btn) return;
+        currentCat = btn.dataset.cat;
+        catBtns.querySelectorAll('.cat-btn').forEach(b => {
+          b.classList.remove('border-primary', 'bg-primary', 'text-black');
+          b.classList.add('border-gray-700', 'text-gray-300');
+        });
+        btn.classList.add('border-primary', 'bg-primary', 'text-black');
+        btn.classList.remove('border-gray-700', 'text-gray-300');
+        render();
+      });
+    }
+  </script>
+</body>
+</html>

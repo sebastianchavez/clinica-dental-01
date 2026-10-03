@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="galeria" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-20 border-b border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Conoce nuestra clínica</p>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Galería</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">Un espacio diseñado para tu comodidad: moderno, luminoso y equipado con la última tecnología.</p>
+      </div>
+    </section>
+
+    <section class="py-8 border-b border-gray-800 sticky top-20 z-30 bg-background-dark/95 backdrop-blur">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-2 justify-center" id="filters">
+          <button data-filter="todas" class="filter-btn px-5 py-2 rounded-full text-sm border border-primary bg-primary text-black font-semibold">Todas</button>
+          <button data-filter="instalaciones" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Instalaciones</button>
+          <button data-filter="equipo" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Equipo</button>
+          <button data-filter="resultados" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Resultados</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="galeriaGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30 rounded-2xl p-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">Ven a conocernos</h2>
+          <p class="text-gray-300 mb-6 max-w-2xl mx-auto">Te invitamos a recorrer las instalaciones y resolver todas tus dudas sin compromiso.</p>
+          <a href="contacto.html" class="btn-primary">Agendar visita</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      const imagenes = [
+        { url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&q=80', categoria: 'instalaciones', titulo: 'Recepción moderna' },
+        { url: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=900&q=80', categoria: 'instalaciones', titulo: 'Consultorio principal' },
+        { url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&q=80', categoria: 'instalaciones', titulo: 'Sala de rayos X' },
+        { url: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=80', categoria: 'instalaciones', titulo: 'Área de ortodoncia' },
+        { url: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=80', categoria: 'equipo', titulo: 'Dr. Mateo Salazar' },
+        { url: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80', categoria: 'equipo', titulo: 'Dra. Carolina Vega' },
+        { url: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=900&q=80', categoria: 'equipo', titulo: 'Dra. Lucía Mendoza' },
+        { url: 'https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=900&q=80', categoria: 'equipo', titulo: 'Dra. Isabel Ramírez' },
+        { url: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&q=80', categoria: 'resultados', titulo: 'Blanqueamiento dental' },
+        { url: 'https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=900&q=80', categoria: 'resultados', titulo: 'Sonrisa restaurada' },
+        { url: 'https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=900&q=80', categoria: 'resultados', titulo: 'Carillas estéticas' },
+        { url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&q=80', categoria: 'resultados', titulo: 'Implantes dentales' }
+      ];
+
+      let current = 'todas';
+
+      function render() {
+        const list = current === 'todas' ? imagenes : imagenes.filter(i => i.categoria === current);
+        const grid = document.getElementById('galeriaGrid');
+        grid.innerHTML = list.map((img, i) => `
+          <div class="galeria-item aspect-[4/3] relative group" data-url="${img.url}" data-title="${img.titulo}" data-index="${i}">
+            <img src="${img.url}" alt="${img.titulo}" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-5">
+              <span class="text-xs uppercase tracking-wider text-primary font-semibold mb-1">${img.categoria}</span>
+              <p class="text-white font-semibold">${img.titulo}</p>
+            </div>
+          </div>
+        `).join('');
+        grid.querySelectorAll('.galeria-item').forEach(el => {
+          el.addEventListener('click', () => openLightbox(el.dataset.url, el.dataset.title));
+        });
+      }
+
+      function openLightbox(url, title) {
+        const lb = document.createElement('div');
+        lb.className = 'lightbox';
+        lb.innerHTML = `
+          <button id="lbClose" class="absolute top-4 right-4 text-white bg-black/50 hover:bg-primary rounded-full h-10 w-10 flex items-center justify-center">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+          <img src="${url}" alt="${title}"/>
+          <p class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-lg font-semibold">${title}</p>
+        `;
+        document.body.appendChild(lb);
+        lb.addEventListener('click', (e) => { if (e.target === lb || e.target.id === 'lbClose' || e.target.closest('#lbClose')) lb.remove(); });
+      }
+
+      render();
+
+      document.querySelectorAll('#filters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          current = btn.dataset.filter;
+          document.querySelectorAll('#filters .filter-btn').forEach(b => {
+            b.classList.remove('bg-primary', 'text-black', 'border-primary');
+            b.classList.add('border-gray-700', 'text-gray-300');
+          });
+          btn.classList.add('bg-primary', 'text-black', 'border-primary');
+          btn.classList.remove('border-gray-700', 'text-gray-300');
+          render();
+        });
+      });
+    }
+  </script>
+</body>
+</html>

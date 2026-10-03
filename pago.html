@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago de Reserva · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="text-center mb-10">
+      <p class="text-primary uppercase tracking-[0.3em] text-xs mb-2 font-medium">Paso final</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">Realizar pago</h1>
+      <p class="text-gray-400">Elige tu método de pago preferido</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bg-background-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">Método de pago</h3>
+          <div class="grid grid-cols-3 gap-3 mb-6" id="metodosPago">
+            <button type="button" data-metodo="tarjeta" class="metodo-btn p-4 border-2 border-primary bg-primary/10 rounded-xl text-center transition-all">
+              <svg class="h-7 w-7 mx-auto mb-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+              <p class="text-white text-sm font-semibold">Tarjeta</p>
+            </button>
+            <button type="button" data-metodo="yape" class="metodo-btn p-4 border-2 border-gray-700 rounded-xl text-center hover:border-primary transition-all">
+              <div class="h-7 w-7 mx-auto mb-2 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">Y</div>
+              <p class="text-white text-sm font-semibold">Yape / Plin</p>
+            </button>
+            <button type="button" data-metodo="efectivo" class="metodo-btn p-4 border-2 border-gray-700 rounded-xl text-center hover:border-primary transition-all">
+              <svg class="h-7 w-7 mx-auto mb-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              <p class="text-white text-sm font-semibold">Efectivo</p>
+            </button>
+          </div>
+
+          <div id="pagoTarjeta" class="metodo-content">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Número de tarjeta</label>
+                <div class="relative">
+                  <input type="text" id="numeroTarjeta" maxlength="19" class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors pr-20" placeholder="1234 5678 9012 3456"/>
+                  <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
+                    <div class="h-6 w-9 bg-blue-600 rounded text-white text-center text-[9px] font-bold flex items-center justify-center">VISA</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2">Nombre del titular</label>
+                <input type="text" id="nombreTarjeta" class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Como aparece en la tarjeta"/>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">Vencimiento</label>
+                  <input type="text" id="vencimiento" maxlength="5" class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="MM/AA"/>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-300 mb-2">CVV</label>
+                  <input type="password" id="cvv" maxlength="4" class="w-full bg-background-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="123"/>
+                </div>
+              </div>
+              <label class="flex items-center gap-2 cursor-pointer pt-2">
+                <input type="checkbox" class="rounded bg-background-dark border-gray-700 text-primary focus:ring-primary focus:ring-offset-background-dark"/>
+                <span class="text-sm text-gray-300">Guardar tarjeta para futuras compras</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="pagoYape" class="metodo-content hidden">
+            <div class="text-center py-6">
+              <div class="inline-block p-4 bg-white rounded-2xl mb-4">
+                <div class="w-48 h-48 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl flex items-center justify-center relative overflow-hidden">
+                  <svg viewBox="0 0 100 100" class="w-full h-full p-4"><g fill="white">
+                    <rect x="0" y="0" width="20" height="20"/><rect x="3" y="3" width="14" height="14" fill="purple"/><rect x="6" y="6" width="8" height="8"/>
+                    <rect x="80" y="0" width="20" height="20"/><rect x="83" y="3" width="14" height="14" fill="purple"/><rect x="86" y="6" width="8" height="8"/>
+                    <rect x="0" y="80" width="20" height="20"/><rect x="3" y="83" width="14" height="14" fill="purple"/><rect x="6" y="86" width="8" height="8"/>
+                    <rect x="40" y="0" width="3" height="3"/><rect x="50" y="0" width="3" height="3"/><rect x="60" y="0" width="3" height="3"/><rect x="70" y="0" width="3" height="3"/>
+                    <rect x="0" y="40" width="3" height="3"/><rect x="10" y="40" width="3" height="3"/><rect x="30" y="40" width="3" height="3"/><rect x="40" y="40" width="3" height="3"/><rect x="50" y="40" width="3" height="3"/><rect x="60" y="40" width="3" height="3"/><rect x="70" y="40" width="3" height="3"/><rect x="90" y="40" width="3" height="3"/>
+                    <rect x="40" y="45" width="20" height="10" fill="white"/>
+                    <rect x="40" y="55" width="20" height="5"/>
+                    <rect x="0" y="60" width="3" height="3"/><rect x="10" y="60" width="3" height="3"/><rect x="30" y="60" width="3" height="3"/><rect x="70" y="60" width="3" height="3"/><rect x="90" y="60" width="3" height="3"/>
+                  </g></svg>
+                </div>
+              </div>
+              <p class="text-white font-semibold mb-1">Escanea el QR con tu app</p>
+              <p class="text-gray-400 text-sm">O envía el pago al <span class="text-primary font-mono font-bold">999 444 222</span></p>
+              <div class="mt-6 p-4 bg-background-dark border border-gray-800 rounded-xl max-w-sm mx-auto text-left">
+                <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-2">Datos para Yape/Plin</p>
+                <p class="text-white text-sm">Titular: Clínica Dental Sonrisa S.A.C.</p>
+                <p class="text-white text-sm">RUC: 20123456789</p>
+                <p class="text-white text-sm">Número: 999 444 222</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="pagoEfectivo" class="metodo-content hidden">
+            <div class="text-center py-6">
+              <svg class="h-16 w-16 text-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              <p class="text-white font-semibold mb-2 text-lg">Paga en el local</p>
+              <p class="text-gray-400 mb-4">Reserva con pago en efectivo al llegar</p>
+              <div class="p-4 bg-background-dark border border-gray-800 rounded-xl max-w-md mx-auto text-left text-sm text-gray-300 space-y-2">
+                <p>✓ Tu cita queda asegurada</p>
+                <p>✓ Paga antes o después del servicio</p>
+                <p>✓ Aceptamos billetes y monedas</p>
+                <p>✓ También aceptamos Yape/Plin en recepción</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <a href="confirmacion.html?reserva=" id="btnVolver" class="btn-outline">← Volver</a>
+          <button id="btnPagar" class="btn-primary text-lg px-8 py-3">
+            <span id="btnText">Pagar ahora</span>
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <aside class="lg:col-span-1">
+        <div class="bg-background-card border border-primary/20 rounded-2xl p-6 sticky top-28" id="resumenBox"></div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      if (!UI.requireAuth('pago.html')) return;
+      const params = new URLSearchParams(window.location.search);
+      const reservaId = params.get('reserva') || Storage.get('cds_reserva_actual');
+      const reserva = Reservas.get(reservaId);
+      if (!reserva) { window.location.href = 'reserva.html'; return; }
+
+      let metodo = 'tarjeta';
+      Reservas.setPagoDraft({ reservaId, metodo });
+
+      document.getElementById('btnVolver').href = 'confirmacion.html?reserva=' + reservaId;
+
+      const servicio = UI.servicioById(reserva.servicioId);
+      const prof = UI.profesionalById(reserva.profesionalId);
+
+      document.getElementById('resumenBox').innerHTML = `
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2" style="font-family: 'Playfair Display', serif;">
+          <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+          Tu reserva
+        </h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex gap-3 items-start">
+            <img src="${servicio.imagen}" class="h-12 w-12 rounded object-cover"/>
+            <div>
+              <p class="text-white font-semibold">${servicio.nombre}</p>
+              <p class="text-gray-400 text-xs">${servicio.duracion} min</p>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-3 space-y-2">
+            <div class="flex justify-between"><span class="text-gray-400">Profesional</span><span class="text-white text-right">${prof.nombre.split(' ').slice(0,2).join(' ')}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Fecha</span><span class="text-white text-right">${UI.formatDateShort(reserva.fecha)}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Hora</span><span class="text-white">${reserva.hora}</span></div>
+          </div>
+          <div class="border-t border-gray-800 pt-3 space-y-2">
+            <div class="flex justify-between"><span class="text-gray-400">Subtotal</span><span class="text-white">${UI.formatPrice(UI.reservaPrecio(reserva))}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">IGV (incluido)</span><span class="text-white">${UI.formatPrice(UI.reservaPrecio(reserva) * 0.18 / 1.18)}</span></div>
+          </div>
+          <div class="border-t border-gray-800 pt-3 flex justify-between text-lg">
+            <span class="text-white font-bold">Total</span>
+            <span class="text-primary font-bold" style="font-family: 'Playfair Display', serif;">${UI.formatPrice(UI.reservaPrecio(reserva))}</span>
+          </div>
+        </div>
+        <div class="mt-5 pt-5 border-t border-gray-800 text-xs text-gray-400 flex items-center gap-2">
+          <svg class="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          Pago 100% seguro y encriptado
+        </div>
+      `;
+
+      const metodosBtns = document.querySelectorAll('.metodo-btn');
+      metodosBtns.forEach(b => {
+        b.addEventListener('click', () => {
+          metodo = b.dataset.metodo;
+          Reservas.setPagoDraft({ reservaId, metodo });
+          metodosBtns.forEach(x => { x.classList.remove('border-primary', 'bg-primary/10'); x.classList.add('border-gray-700'); });
+          b.classList.add('border-primary', 'bg-primary/10');
+          b.classList.remove('border-gray-700');
+          document.querySelectorAll('.metodo-content').forEach(c => c.classList.add('hidden'));
+          if (metodo === 'tarjeta') document.getElementById('pagoTarjeta').classList.remove('hidden');
+          if (metodo === 'yape') document.getElementById('pagoYape').classList.remove('hidden');
+          if (metodo === 'efectivo') document.getElementById('pagoEfectivo').classList.remove('hidden');
+          document.getElementById('btnText').textContent = metodo === 'efectivo' ? 'Confirmar reserva' : 'Pagar ahora';
+        });
+      });
+
+      document.getElementById('numeroTarjeta').addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '').substring(0, 16);
+        e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+      });
+      document.getElementById('vencimiento').addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length > 2) v = v.substring(0,2) + '/' + v.substring(2);
+        e.target.value = v;
+      });
+      document.getElementById('cvv').addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
+      });
+
+      document.getElementById('btnPagar').addEventListener('click', () => {
+        if (metodo === 'tarjeta') {
+          const num = document.getElementById('numeroTarjeta').value.replace(/\s/g, '');
+          const nom = document.getElementById('nombreTarjeta').value.trim();
+          const ven = document.getElementById('vencimiento').value;
+          const cvv = document.getElementById('cvv').value;
+          if (num.length < 13) { UI.toast('Número de tarjeta inválido', 'error'); return; }
+          if (!nom) { UI.toast('Ingresa el nombre del titular', 'error'); return; }
+          if (ven.length !== 5) { UI.toast('Fecha de vencimiento inválida', 'error'); return; }
+          if (cvv.length < 3) { UI.toast('CVV inválido', 'error'); return; }
+        }
+
+        const btn = document.getElementById('btnPagar');
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="animate-spin h-5 w-5" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path></svg> Procesando...';
+
+        setTimeout(() => {
+          const update = { estado: 'confirmada', pago: metodo === 'efectivo' ? 'pendiente' : 'pagado', metodoPago: metodo };
+          Reservas.update(reservaId, update);
+          Reservas.clearPagoDraft();
+          Storage.remove('cds_reserva_actual');
+          Storage.set('cds_pago_exitoso', JSON.stringify({ reservaId, metodo, monto: UI.reservaPrecio(reserva) }));
+          window.location.href = 'pago-confirmado.html';
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>

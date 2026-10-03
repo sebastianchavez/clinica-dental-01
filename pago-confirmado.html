@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago Confirmado · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <div class="checkmark-circle mx-auto mb-6">
+          <div class="background"></div>
+          <div class="checkmark"></div>
+        </div>
+        <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">¡Pago exitoso!</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">Tu pago fue procesado</h1>
+        <p class="text-gray-400" id="subtitulo">Hemos recibido tu pago correctamente</p>
+      </div>
+
+      <div class="bg-background-card border border-gray-800 rounded-2xl overflow-hidden mb-6">
+        <div class="bg-gradient-to-r from-primary/10 to-primary/5 border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+          <div>
+            <p class="text-xs text-gray-400 uppercase tracking-widest">Recibo</p>
+            <p id="reciboNum" class="text-primary font-mono font-bold text-lg">REC</p>
+          </div>
+          <span class="text-xs uppercase px-3 py-1 rounded-full border bg-cyan-500/20 text-cyan-300 border-cyan-500/30 font-semibold" id="pagoBadge">Pagado</span>
+        </div>
+        <div class="p-6" id="reciboContent"></div>
+      </div>
+
+      <div class="bg-background-card border border-gray-800 rounded-2xl p-6 mb-6">
+        <h3 class="text-lg font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">Próximos pasos</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="h-6 w-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+            <span>Te enviamos un email con todos los detalles y comprobante de pago.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="h-6 w-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+            <span>Recibirás un recordatorio 24 horas antes de tu cita.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="h-6 w-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+            <span>Llega 10 minutos antes con tu documento de identidad.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <a id="btnDownload" href="#" class="btn-outline justify-center text-sm">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Descargar recibo
+        </a>
+        <a href="perfil.html" class="btn-outline justify-center text-sm">
+          Ver mis reservas
+        </a>
+        <a href="index.html" class="btn-primary justify-center text-sm">
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      const exito = Storage.get('cds_pago_exitoso');
+      if (!exito) { window.location.href = 'index.html'; return; }
+      const reserva = Reservas.get(exito.reservaId);
+      if (!reserva) { window.location.href = 'index.html'; return; }
+
+      const servicio = UI.servicioById(reserva.servicioId);
+      const prof = UI.profesionalById(reserva.profesionalId);
+      const reciboNum = 'REC-' + Date.now().toString().slice(-8);
+      document.getElementById('reciboNum').textContent = reciboNum;
+
+      if (exito.metodo === 'efectivo') {
+        document.getElementById('subtitulo').textContent = 'Tu reserva está confirmada. Pagarás en el local al recibir el servicio.';
+        document.getElementById('pagoBadge').textContent = 'Por pagar en local';
+        document.getElementById('pagoBadge').className = 'text-xs uppercase px-3 py-1 rounded-full border bg-yellow-500/20 text-yellow-300 border-yellow-500/30 font-semibold';
+      }
+
+      const metodoLabel = { tarjeta: 'Tarjeta de crédito/débito', yape: 'Yape / Plin', efectivo: 'Efectivo en local' };
+
+      document.getElementById('reciboContent').innerHTML = `
+        <div class="flex items-center gap-4 pb-5 mb-5 border-b border-gray-800">
+          <img src="${servicio.imagen}" class="h-14 w-14 rounded-lg object-cover"/>
+          <div class="flex-1">
+            <p class="text-white font-semibold">${servicio.nombre}</p>
+            <p class="text-gray-400 text-sm">${UI.categoriaLabel(servicio.categoria)}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-5 text-sm mb-5">
+          <div>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Fecha y hora</p>
+            <p class="text-white font-semibold">${UI.formatDate(reserva.fecha)}</p>
+            <p class="text-white font-semibold">${reserva.hora}</p>
+          </div>
+          <div>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Especialista</p>
+            <p class="text-white font-semibold">${prof.nombre}</p>
+            <p class="text-gray-400 text-xs">${prof.colegiatura}</p>
+          </div>
+          <div>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Método de pago</p>
+            <p class="text-white font-semibold">${metodoLabel[exito.metodo] || exito.metodo}</p>
+          </div>
+          <div>
+            <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Fecha de pago</p>
+            <p class="text-white font-semibold">${new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-5 space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-400">Subtotal</span><span class="text-white">${UI.formatPrice(exito.monto)}</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">IGV incluido</span><span class="text-white">${UI.formatPrice(exito.monto * 0.18 / 1.18)}</span></div>
+          <div class="border-t border-gray-800 pt-3 flex justify-between text-lg">
+            <span class="text-white font-bold">Total</span>
+            <span class="text-primary font-bold" style="font-family: 'Playfair Display', serif;">${UI.formatPrice(exito.monto)}</span>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('btnDownload').addEventListener('click', (e) => {
+        e.preventDefault();
+        const txt = `
+CLÍNICA DENTAL SONRISA
+Recibo: ${reciboNum}
+Fecha: ${new Date().toLocaleDateString('es-ES')}
+
+Paciente: ${Auth.current().nombre}
+Servicio: ${servicio.nombre}
+Especialista: ${prof.nombre}
+Fecha cita: ${UI.formatDate(reserva.fecha)} ${reserva.hora}
+Método: ${metodoLabel[exito.metodo]}
+Total: ${UI.formatPrice(exito.monto)}
+
+¡Gracias por tu preferencia!
+        `.trim();
+        const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = `${reciboNum}.txt`; a.click();
+        URL.revokeObjectURL(url);
+        UI.toast('Recibo descargado');
+      });
+    }
+  </script>
+</body>
+</html>

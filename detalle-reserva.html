@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle de Reserva · Clínica Dental Sonrisa</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="max-w-3xl mx-auto">
+      <a href="perfil.html" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition-colors mb-6">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        Volver a mis reservas
+      </a>
+
+      <div class="flex items-start justify-between mb-8 flex-wrap gap-4">
+        <div>
+          <p class="text-primary uppercase tracking-[0.3em] text-xs mb-2 font-medium">Detalle de reserva</p>
+          <h1 class="text-3xl md:text-4xl font-bold text-white" style="font-family: 'Playfair Display', serif;" id="reservaTitulo">Cargando...</h1>
+          <p class="text-gray-400 mt-1">Reserva <span id="codigoReserva" class="font-mono text-primary"></span></p>
+        </div>
+        <span id="estadoBadge" class="text-xs uppercase px-4 py-2 rounded-full border font-semibold"></span>
+      </div>
+
+      <div id="reservaContent" class="space-y-6"></div>
+    </div>
+  </main>
+
+  <div id="modalAnular" class="modal-backdrop hidden">
+    <div class="modal-content">
+      <div class="text-center mb-4">
+        <div class="inline-flex h-14 w-14 rounded-full bg-red-500/10 border border-red-500/30 items-center justify-center mb-3">
+          <svg class="h-7 w-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-2" style="font-family: 'Playfair Display', serif;">¿Anular cita?</h3>
+        <p class="text-gray-400">Esta acción no se puede deshacer. Si cambias de opinión, deberás crear una nueva reserva.</p>
+      </div>
+      <div class="bg-background-dark border border-gray-800 rounded-lg p-4 mb-6 text-sm">
+        <p class="text-gray-400 mb-1">Reserva:</p>
+        <p class="text-white font-semibold" id="modalReservaInfo">—</p>
+        <p class="text-xs text-gray-500 mt-2">* Cancelación con más de 24h: sin penalización. Entre 12-24h: 30%. Menos de 12h: 50%.</p>
+      </div>
+      <label class="flex items-start gap-3 cursor-pointer mb-5">
+        <input type="checkbox" id="chkConfirmar" class="mt-1 rounded bg-background-dark border-gray-700 text-red-500 focus:ring-red-500"/>
+        <span class="text-sm text-gray-300">Confirmo que deseo anular esta cita y entiendo las posibles penalizaciones según la política de cancelaciones.</span>
+      </label>
+      <div class="flex gap-3">
+        <button id="btnCancelarModal" class="btn-outline flex-1">Mantener cita</button>
+        <button id="btnConfirmarAnular" class="flex-1 bg-red-500 text-white font-bold py-3 rounded-lg hover:bg-red-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>Anular cita</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      if (!UI.requireAuth('detalle-reserva.html')) return;
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const r = Reservas.get(id);
+      if (!r || r.userId !== Auth.current().id) {
+        document.querySelector('main').innerHTML = '<p class="text-center text-gray-400 py-20">Reserva no encontrada.</p>';
+        return;
+      }
+
+      const servicio = UI.servicioById(r.servicioId);
+      const prof = UI.profesionalById(r.profesionalId);
+      const user = Auth.current();
+      const codigo = 'CDS-' + r.id.slice(-6).toUpperCase();
+      const pastDate = UI.isPastDate(r.fecha);
+
+      document.getElementById('codigoReserva').textContent = codigo;
+      document.getElementById('reservaTitulo').textContent = servicio.nombre;
+
+      const eb = UI.estadoBadge(r.estado);
+      const badgeEl = document.getElementById('estadoBadge');
+      badgeEl.className = 'text-xs uppercase px-4 py-2 rounded-full border font-semibold ' + eb.cls;
+      badgeEl.textContent = eb.label;
+
+      const canCancel = r.estado !== 'anulada' && r.estado !== 'completada' && !pastDate;
+
+      document.getElementById('reservaContent').innerHTML = `
+        <div class="bg-background-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-5" style="font-family: 'Playfair Display', serif;">Información del tratamiento</h3>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <img src="${servicio.imagen}" class="h-32 w-32 rounded-xl object-cover"/>
+            <div class="flex-1 space-y-2">
+              <h4 class="text-xl font-bold text-white">${servicio.nombre}</h4>
+              <p class="text-gray-400 text-sm">${servicio.descripcion}</p>
+              <div class="flex flex-wrap gap-3 pt-2 text-sm">
+                <span class="flex items-center gap-1.5 text-gray-300"><svg class="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>${servicio.duracion} min</span>
+                <span class="flex items-center gap-1.5 text-gray-300"><svg class="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>${UI.categoriaLabel(servicio.categoria)}</span>
+                <span class="flex items-center gap-1.5 text-primary font-bold">${UI.formatPrice(servicio.precio)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-background-card border border-gray-800 rounded-xl p-5">
+            <p class="text-xs text-primary uppercase tracking-widest font-semibold mb-2">Fecha</p>
+            <p class="text-white font-bold text-lg" style="font-family: 'Playfair Display', serif;">${UI.formatDate(r.fecha)}</p>
+          </div>
+          <div class="bg-background-card border border-gray-800 rounded-xl p-5">
+            <p class="text-xs text-primary uppercase tracking-widest font-semibold mb-2">Hora</p>
+            <p class="text-white font-bold text-lg" style="font-family: 'Playfair Display', serif;">${r.hora}</p>
+          </div>
+        </div>
+
+        <div class="bg-background-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-5" style="font-family: 'Playfair Display', serif;">Especialista asignado</h3>
+          <div class="flex items-center gap-4">
+            <img src="${prof.foto}" class="h-16 w-16 rounded-full object-cover border-2 border-primary/30"/>
+            <div class="flex-1">
+              <h4 class="text-white font-semibold">${prof.nombre}</h4>
+              <p class="text-primary text-sm uppercase tracking-wider">${prof.rol}</p>
+              <p class="text-gray-500 text-xs mt-0.5">${prof.colegiatura} · ${prof.experiencia} de experiencia</p>
+              <div class="flex items-center gap-1 mt-1 text-sm">
+                <span class="text-primary">★</span><span class="text-white">${prof.rating}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-background-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-white mb-5" style="font-family: 'Playfair Display', serif;">Información de pago</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">Total</span><span class="text-white font-bold">${UI.formatPrice(UI.reservaPrecio(r))}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Estado de pago</span>
+              <span class="text-xs uppercase ${UI.pagoBadge(r.pago).cls} px-2 py-1 rounded-full border">${UI.pagoBadge(r.pago).label}</span>
+            </div>
+            ${r.metodoPago ? `<div class="flex justify-between"><span class="text-gray-400">Método</span><span class="text-white">${r.metodoPago === 'tarjeta' ? 'Tarjeta' : r.metodoPago === 'yape' ? 'Yape/Plin' : 'Efectivo'}</span></div>` : ''}
+          </div>
+          ${r.pago === 'pendiente' && r.estado !== 'anulada' ? `<a href="pago.html?reserva=${r.id}" class="btn-primary w-full mt-4 text-sm">Pagar ahora</a>` : ''}
+        </div>
+
+        ${r.notas ? `<div class="bg-background-card border border-gray-800 rounded-2xl p-6">
+          <h3 class="text-sm font-bold text-primary uppercase tracking-widest mb-2">Notas para el especialista</h3>
+          <p class="text-white text-sm whitespace-pre-wrap">${r.notas}</p>
+        </div>` : ''}
+
+        ${canCancel ? `<button id="btnAnular" class="w-full border-2 border-red-500/50 text-red-400 hover:bg-red-500 hover:text-white font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M9 4h6a1 1 0 011 1v2H8V5a1 1 0 011-1z"></path></svg>
+          Anular esta cita
+        </button>` : ''}
+
+        ${pastDate && r.estado !== 'anulada' && r.estado !== 'completada' ? `<div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 text-sm text-yellow-200 flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>La fecha de la cita ya pasó. No es posible anularla.</span>
+        </div>` : ''}
+
+        ${r.estado === 'anulada' ? `<div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-sm text-red-200 flex items-start gap-3">
+          <svg class="h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>Esta cita fue anulada. Si necesitas atención, crea una nueva reserva.</span>
+        </div>` : ''}
+      `;
+
+      const btnAnular = document.getElementById('btnAnular');
+      if (btnAnular) {
+        btnAnular.addEventListener('click', () => {
+          document.getElementById('modalReservaInfo').textContent = `${servicio.nombre} · ${UI.formatDateShort(r.fecha)} ${r.hora}`;
+          document.getElementById('modalAnular').classList.remove('hidden');
+          document.getElementById('chkConfirmar').checked = false;
+          document.getElementById('btnConfirmarAnular').disabled = true;
+        });
+      }
+
+      document.getElementById('btnCancelarModal').addEventListener('click', () => {
+        document.getElementById('modalAnular').classList.add('hidden');
+      });
+
+      document.getElementById('chkConfirmar').addEventListener('change', (e) => {
+        document.getElementById('btnConfirmarAnular').disabled = !e.target.checked;
+      });
+
+      document.getElementById('btnConfirmarAnular').addEventListener('click', () => {
+        Reservas.cancel(r.id);
+        UI.toast('Cita anulada correctamente');
+        document.getElementById('modalAnular').classList.add('hidden');
+        setTimeout(() => window.location.reload(), 700);
+      });
+    }
+  </script>
+</body>
+</html>

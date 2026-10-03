@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios · Clínica Dental Sonrisa</title>
+  <meta name="description" content="Conoce todos nuestros servicios odontológicos: limpieza, ortodoncia, implantes, blanqueamiento, endodoncia y más." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#0891b2', 'primary-light': '#06b6d4', 'background-dark': '#0a1929', 'background-card': '#0f1e2e' },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="servicios" class="bg-background-dark text-gray-200 font-sans">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-20 border-b border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">Odontología integral</p>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Nuestros servicios</h1>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">Ofrecemos una amplia gama de tratamientos para cuidar tu salud bucal en cada etapa de la vida.</p>
+      </div>
+    </section>
+
+    <section class="py-8 border-b border-gray-800 sticky top-20 z-30 bg-background-dark/95 backdrop-blur">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-2 justify-center" id="filters">
+          <button data-filter="todas" class="filter-btn px-5 py-2 rounded-full text-sm border border-primary bg-primary text-black font-semibold">Todas</button>
+          <button data-filter="preventiva" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Preventiva</button>
+          <button data-filter="estetica" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Estética</button>
+          <button data-filter="restauracion" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Restauración</button>
+          <button data-filter="endodoncia" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Endodoncia</button>
+          <button data-filter="ortodoncia" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Ortodoncia</button>
+          <button data-filter="cirugia" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Cirugía</button>
+          <button data-filter="implantes" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Implantes</button>
+          <button data-filter="pediatria" class="filter-btn px-5 py-2 rounded-full text-sm border border-gray-700 text-gray-300 hover:border-primary font-medium">Odontopediatría</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="serviciosGrid"></div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-background-card/40 border-y border-primary/10">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-primary uppercase tracking-[0.3em] text-xs mb-3 font-medium">¿Necesitas ayuda?</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">No estás seguro qué tratamiento necesitas</h2>
+            <p class="text-gray-300 mb-6">Agenda una consulta de diagnóstico con uno de nuestros especialistas. Evaluamos tu caso, te explicamos opciones y armamos un plan personalizado.</p>
+            <a href="reserva.html?servicio=sd2" class="btn-primary">Reservar consulta</a>
+          </div>
+          <div class="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">Tu primera consulta incluye</h3>
+            <ul class="space-y-3 text-gray-200">
+              <li class="flex items-start gap-3">
+                <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Evaluación clínica completa
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Radiografía periapcial digital
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Plan de tratamiento detallado
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="h-5 w-5 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Presupuesto sin compromiso
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="main.js"></script>
+  <script>
+    function pageInit() {
+      let currentFilter = 'todas';
+
+      function render() {
+        const list = currentFilter === 'todas' ? SERVICIOS : SERVICIOS.filter(s => s.categoria === currentFilter);
+        const grid = document.getElementById('serviciosGrid');
+        grid.innerHTML = list.map(s => `
+          <article class="card-hover bg-background-card border border-gray-800 rounded-2xl overflow-hidden group">
+            <div class="aspect-[4/3] overflow-hidden relative">
+              <img src="${s.imagen}" alt="${s.nombre}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+              <span class="absolute top-3 left-3 text-xs uppercase tracking-wider px-3 py-1 rounded-full bg-background-dark/80 backdrop-blur text-primary border border-primary/30 font-semibold">${UI.categoriaLabel(s.categoria)}</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2" style="font-family: 'Playfair Display', serif;">${s.nombre}</h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-2">${s.descripcion}</p>
+              <div class="flex items-center gap-4 pb-4 border-b border-gray-800">
+                <div class="flex items-center gap-1.5 text-sm text-gray-300">
+                  <svg class="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  ${s.duracion} min
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-4">
+                <div>
+                  <p class="text-xs text-gray-500 uppercase tracking-wider">Desde</p>
+                  <p class="text-primary text-2xl font-bold" style="font-family: 'Playfair Display', serif;">${UI.formatPrice(s.precio)}</p>
+                </div>
+                <a href="reserva.html?servicio=${s.id}" class="btn-primary text-sm">Reservar</a>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      render();
+
+      document.querySelectorAll('#filters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentFilter = btn.dataset.filter;
+          document.querySelectorAll('#filters .filter-btn').forEach(b => {
+            b.classList.remove('bg-primary', 'text-black', 'border-primary');
+            b.classList.add('border-gray-700', 'text-gray-300');
+          });
+          btn.classList.add('bg-primary', 'text-black', 'border-primary');
+          btn.classList.remove('border-gray-700', 'text-gray-300');
+          render();
+        });
+      });
+    }
+  </script>
+</body>
+</html>
