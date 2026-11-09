@@ -1,26 +1,26 @@
 const STORAGE_KEYS = {
-  USERS: 'cds_users',
-  SESSION: 'cds_session',
-  RESERVAS: 'cds_reservas',
-  RESERVA_DRAFT: 'cds_reserva_draft',
-  PAGO_DRAFT: 'cds_pago_draft',
-  THEME: 'cds_theme',
-  CONTACT_MSGS: 'cds_contact_messages'
+  USERS: 'cds_users_clp_v1',
+  SESSION: 'cds_session_clp_v1',
+  RESERVAS: 'cds_reservas_clp_v1',
+  RESERVA_DRAFT: 'cds_reserva_draft_clp_v1',
+  PAGO_DRAFT: 'cds_pago_draft_clp_v1',
+  THEME: 'cds_theme_clp_v1',
+  CONTACT_MSGS: 'cds_contact_messages_clp_v1'
 };
 
 const SERVICIOS = [
-  { id: 'sd1', categoria: 'preventiva', nombre: 'Limpieza Dental Profesional', descripcion: 'Profilaxis completa con ultrasonido, pulido y flúor para mantener una sonrisa sana.', duracion: 30, precio: 120, imagen: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80' },
-  { id: 'sd2', categoria: 'preventiva', nombre: 'Consulta y Diagnóstico', descripcion: 'Evaluación integral con radiografía periapical y plan de tratamiento personalizado.', duracion: 30, precio: 80, imagen: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80' },
-  { id: 'sd3', categoria: 'estetica', nombre: 'Blanqueamiento Dental', descripcion: 'Blanqueamiento LED profesional con peróxido de hidrógeno. Hasta 8 tonos más blanco.', duracion: 90, precio: 450, imagen: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80' },
-  { id: 'sd4', categoria: 'endodoncia', nombre: 'Tratamiento de Conductos', descripcion: 'Endodoncia uni o multirradicular con instrumentación rotatoria y obturación termoplástica.', duracion: 90, precio: 380, imagen: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80' },
-  { id: 'sd5', categoria: 'ortodoncia', nombre: 'Ortodoncia - Consulta Inicial', descripcion: 'Estudio de ortodoncia con escaneo 3D, cefalometría y plan de tratamiento.', duracion: 45, precio: 150, imagen: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80' },
-  { id: 'sd6', categoria: 'cirugia', nombre: 'Extracción Simple', descripcion: 'Exodoncia de pieza dentaria con anestesia local y cuidados post-operatorios.', duracion: 30, precio: 100, imagen: 'https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&q=80' },
-  { id: 'sd7', categoria: 'cirugia', nombre: 'Extracción de Cordales', descripcion: 'Extracción quirúrgica de terceros molares incluidos o semi-incluidos.', duracion: 60, precio: 250, imagen: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80' },
-  { id: 'sd8', categoria: 'estetica', nombre: 'Carillas de Porcelana', descripcion: 'Carillas estéticas E-max de alta estética y durabilidad para una sonrisa perfecta.', duracion: 120, precio: 800, imagen: 'https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=800&q=80' },
-  { id: 'sd9', categoria: 'restauracion', nombre: 'Resina Dental', descripcion: 'Restauración estética con resinas compuestas del color de tu diente.', duracion: 60, precio: 180, imagen: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&q=80' },
-  { id: 'sd10', categoria: 'restauracion', nombre: 'Corona Dental', descripcion: 'Corona de porcelana sobre metal o zirconio para piezas con gran destrucción.', duracion: 90, precio: 950, imagen: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80' },
-  { id: 'sd11', categoria: 'implantes', nombre: 'Implante Dental', descripcion: 'Implante de titanio con corona incluida. Tratamiento completo en 2 fases.', duracion: 120, precio: 2200, imagen: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80' },
-  { id: 'sd12', categoria: 'pediatria', nombre: 'Odontopediatría', descripcion: 'Atención especializada para niños con técnicas de manejo de conducta y prevención.', duracion: 45, precio: 140, imagen: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80' }
+  { id: 'sd1', categoria: 'preventiva', nombre: 'Limpieza Dental Profesional', descripcion: 'Profilaxis completa con ultrasonido, pulido y flúor para mantener una sonrisa sana.', duracion: 30, precio: 30000, imagen: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80' },
+  { id: 'sd2', categoria: 'preventiva', nombre: 'Consulta y Diagnóstico', descripcion: 'Evaluación integral con radiografía periapical y plan de tratamiento personalizado.', duracion: 30, precio: 20000, imagen: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80' },
+  { id: 'sd3', categoria: 'estetica', nombre: 'Blanqueamiento Dental', descripcion: 'Blanqueamiento LED profesional con peróxido de hidrógeno. Hasta 8 tonos más blanco.', duracion: 90, precio: 112500, imagen: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80' },
+  { id: 'sd4', categoria: 'endodoncia', nombre: 'Tratamiento de Conductos', descripcion: 'Endodoncia uni o multirradicular con instrumentación rotatoria y obturación termoplástica.', duracion: 90, precio: 95000, imagen: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80' },
+  { id: 'sd5', categoria: 'ortodoncia', nombre: 'Ortodoncia - Consulta Inicial', descripcion: 'Estudio de ortodoncia con escaneo 3D, cefalometría y plan de tratamiento.', duracion: 45, precio: 37500, imagen: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80' },
+  { id: 'sd6', categoria: 'cirugia', nombre: 'Extracción Simple', descripcion: 'Exodoncia de pieza dentaria con anestesia local y cuidados post-operatorios.', duracion: 30, precio: 25000, imagen: 'https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&q=80' },
+  { id: 'sd7', categoria: 'cirugia', nombre: 'Extracción de Cordales', descripcion: 'Extracción quirúrgica de terceros molares incluidos o semi-incluidos.', duracion: 60, precio: 62500, imagen: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80' },
+  { id: 'sd8', categoria: 'estetica', nombre: 'Carillas de Porcelana', descripcion: 'Carillas estéticas E-max de alta estética y durabilidad para una sonrisa perfecta.', duracion: 120, precio: 200000, imagen: 'https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=800&q=80' },
+  { id: 'sd9', categoria: 'restauracion', nombre: 'Resina Dental', descripcion: 'Restauración estética con resinas compuestas del color de tu diente.', duracion: 60, precio: 45000, imagen: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&q=80' },
+  { id: 'sd10', categoria: 'restauracion', nombre: 'Corona Dental', descripcion: 'Corona de porcelana sobre metal o zirconio para piezas con gran destrucción.', duracion: 90, precio: 237500, imagen: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80' },
+  { id: 'sd11', categoria: 'implantes', nombre: 'Implante Dental', descripcion: 'Implante de titanio con corona incluida. Tratamiento completo en 2 fases.', duracion: 120, precio: 550000, imagen: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80' },
+  { id: 'sd12', categoria: 'pediatria', nombre: 'Odontopediatría', descripcion: 'Atención especializada para niños con técnicas de manejo de conducta y prevención.', duracion: 45, precio: 35000, imagen: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80' }
 ];
 
 const PROFESIONALES = [
@@ -59,8 +59,8 @@ const Auth = {
     const users = Storage.get(STORAGE_KEYS.USERS, []);
     if (users.length === 0) {
       Storage.set(STORAGE_KEYS.USERS, [
-        { id: 'u1', nombre: 'Juan Pérez', email: 'juan@test.com', telefono: '+51 999 111 222', dni: '45678901', password: '123456', foto: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&q=80', creado: Date.now() - 86400000 * 60 },
-        { id: 'u2', nombre: 'María López', email: 'maria@test.com', telefono: '+51 999 333 444', dni: '47890123', password: '123456', foto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', creado: Date.now() - 86400000 * 30 }
+        { id: 'u1', nombre: 'Juan Pérez', email: 'juan@test.com', telefono: '+56 9 9911 1222', dni: '45678901', password: '123456', foto: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&q=80', creado: Date.now() - 86400000 * 60 },
+        { id: 'u2', nombre: 'María López', email: 'maria@test.com', telefono: '+56 9 9933 3444', dni: '47890123', password: '123456', foto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', creado: Date.now() - 86400000 * 30 }
       ]);
     }
   },
@@ -114,10 +114,10 @@ const Reservas = {
     const list = Storage.get(STORAGE_KEYS.RESERVAS, null);
     if (list === null) {
       const samples = [
-        { id: 'r1', userId: 'u1', servicioId: 'sd1', profesionalId: 'pd1', fecha: this._futureDate(3), hora: '10:00', estado: 'confirmada', pago: 'pagado', metodoPago: 'tarjeta', precio: 120, notas: '', createdAt: Date.now() - 86400000 * 2 },
-        { id: 'r2', userId: 'u1', servicioId: 'sd3', profesionalId: 'pd1', fecha: this._futureDate(7), hora: '15:00', estado: 'pendiente', pago: 'pendiente', metodoPago: null, precio: 450, notas: 'Tratamiento de dientes superiores', createdAt: Date.now() - 86400000 },
-        { id: 'r3', userId: 'u1', servicioId: 'sd1', profesionalId: 'pd1', fecha: this._futureDate(-15), hora: '11:00', estado: 'completada', pago: 'pagado', metodoPago: 'yape', precio: 120, notas: '', createdAt: Date.now() - 86400000 * 20 },
-        { id: 'r4', userId: 'u1', servicioId: 'sd6', profesionalId: 'pd1', fecha: this._futureDate(-30), hora: '16:00', estado: 'completada', pago: 'pagado', metodoPago: 'efectivo', precio: 100, notas: '', createdAt: Date.now() - 86400000 * 35 }
+        { id: 'r1', userId: 'u1', servicioId: 'sd1', profesionalId: 'pd1', fecha: this._futureDate(3), hora: '10:00', estado: 'confirmada', pago: 'pagado', metodoPago: 'tarjeta', precio: 30000, notas: '', createdAt: Date.now() - 86400000 * 2 },
+        { id: 'r2', userId: 'u1', servicioId: 'sd3', profesionalId: 'pd1', fecha: this._futureDate(7), hora: '15:00', estado: 'pendiente', pago: 'pendiente', metodoPago: null, precio: 112500, notas: 'Tratamiento de dientes superiores', createdAt: Date.now() - 86400000 },
+        { id: 'r3', userId: 'u1', servicioId: 'sd1', profesionalId: 'pd1', fecha: this._futureDate(-15), hora: '11:00', estado: 'completada', pago: 'pagado', metodoPago: 'yape', precio: 30000, notas: '', createdAt: Date.now() - 86400000 * 20 },
+        { id: 'r4', userId: 'u1', servicioId: 'sd6', profesionalId: 'pd1', fecha: this._futureDate(-30), hora: '16:00', estado: 'completada', pago: 'pagado', metodoPago: 'efectivo', precio: 25000, notas: '', createdAt: Date.now() - 86400000 * 35 }
       ];
       Storage.set(STORAGE_KEYS.RESERVAS, samples);
     }
@@ -161,14 +161,14 @@ const UI = {
   formatDate(iso) {
     if (!iso) return '';
     const d = new Date(iso + 'T00:00:00');
-    return d.toLocaleDateString('es-ES', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('es-CL', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
   },
   formatDateShort(iso) {
     if (!iso) return '';
     const d = new Date(iso + 'T00:00:00');
-    return d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString('es-CL', { day: '2-digit', month: 'short', year: 'numeric' });
   },
-  formatPrice(n) { return 'S/ ' + Number(n).toFixed(2); },
+  formatPrice(n) { return 'CLP$ ' + Number(n).toLocaleString('es-CL', { maximumFractionDigits: 0 }); },
   reservaPrecio(r) {
     if (r && typeof r.precio === 'number') return r.precio;
     const s = r ? SERVICIOS.find(x => x.id === r.servicioId) : null;
@@ -354,15 +354,15 @@ function buildFooter() {
           <ul class="space-y-3 text-sm text-gray-400">
             <li class="flex items-start gap-2">
               <svg class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-              Av. Javier Prado Este 456, San Isidro
+              Av. Javier Prado Este 456, Las Condes
             </li>
             <li class="flex items-start gap-2">
               <svg class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-              +51 999 444 222
+              +56 9 9944 4222
             </li>
             <li class="flex items-start gap-2">
               <svg class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              hola@clinicasonrisa.pe
+              hola@clinicasonrisa.cl
             </li>
           </ul>
           <div class="flex gap-3 mt-5">
@@ -380,7 +380,7 @@ function buildFooter() {
       </div>
       <div class="border-t border-primary/20 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="text-sm text-gray-500">© 2024 Clínica Dental Sonrisa. Todos los derechos reservados.</p>
-        <p class="text-xs text-gray-600">San Isidro, Lima · Hecho con cuidado</p>
+        <p class="text-xs text-gray-600">Las Condes, Santiago · Hecho con cuidado</p>
       </div>
     </div>
   </footer>`;

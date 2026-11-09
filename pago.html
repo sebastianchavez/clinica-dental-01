@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es-CL" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,7 +40,7 @@
             </button>
             <button type="button" data-metodo="yape" class="metodo-btn p-4 border-2 border-gray-700 rounded-xl text-center hover:border-primary transition-all">
               <div class="h-7 w-7 mx-auto mb-2 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">Y</div>
-              <p class="text-white text-sm font-semibold">Yape / Plin</p>
+              <p class="text-white text-sm font-semibold">Transferencia / Depósito</p>
             </button>
             <button type="button" data-metodo="efectivo" class="metodo-btn p-4 border-2 border-gray-700 rounded-xl text-center hover:border-primary transition-all">
               <svg class="h-7 w-7 mx-auto mb-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
@@ -99,7 +99,7 @@
               <p class="text-white font-semibold mb-1">Escanea el QR con tu app</p>
               <p class="text-gray-400 text-sm">O envía el pago al <span class="text-primary font-mono font-bold">999 444 222</span></p>
               <div class="mt-6 p-4 bg-background-dark border border-gray-800 rounded-xl max-w-sm mx-auto text-left">
-                <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-2">Datos para Yape/Plin</p>
+                <p class="text-xs text-primary font-semibold uppercase tracking-wider mb-2">Datos para Transferencia/Depósito</p>
                 <p class="text-white text-sm">Titular: Clínica Dental Sonrisa S.A.C.</p>
                 <p class="text-white text-sm">RUC: 20123456789</p>
                 <p class="text-white text-sm">Número: 999 444 222</p>
@@ -116,7 +116,7 @@
                 <p>✓ Tu cita queda asegurada</p>
                 <p>✓ Paga antes o después del servicio</p>
                 <p>✓ Aceptamos billetes y monedas</p>
-                <p>✓ También aceptamos Yape/Plin en recepción</p>
+                <p>✓ También aceptamos Transferencia/Depósito en recepción</p>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@
           </div>
           <div class="border-t border-gray-800 pt-3 space-y-2">
             <div class="flex justify-between"><span class="text-gray-400">Subtotal</span><span class="text-white">${UI.formatPrice(UI.reservaPrecio(reserva))}</span></div>
-            <div class="flex justify-between"><span class="text-gray-400">IGV (incluido)</span><span class="text-white">${UI.formatPrice(UI.reservaPrecio(reserva) * 0.18 / 1.18)}</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">IVA (incluido)</span><span class="text-white">${UI.formatPrice(UI.reservaPrecio(reserva) * 0.19 / 1.19)}</span></div>
           </div>
           <div class="border-t border-gray-800 pt-3 flex justify-between text-lg">
             <span class="text-white font-bold">Total</span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es-CL" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -146,7 +146,7 @@
             <div class="flex justify-between"><span class="text-gray-400">Estado de pago</span>
               <span class="text-xs uppercase ${UI.pagoBadge(r.pago).cls} px-2 py-1 rounded-full border">${UI.pagoBadge(r.pago).label}</span>
             </div>
-            ${r.metodoPago ? `<div class="flex justify-between"><span class="text-gray-400">Método</span><span class="text-white">${r.metodoPago === 'tarjeta' ? 'Tarjeta' : r.metodoPago === 'yape' ? 'Yape/Plin' : 'Efectivo'}</span></div>` : ''}
+            ${r.metodoPago ? `<div class="flex justify-between"><span class="text-gray-400">Método</span><span class="text-white">${r.metodoPago === 'tarjeta' ? 'Tarjeta' : r.metodoPago === 'yape' ? 'Transferencia/Depósito' : 'Efectivo'}</span></div>` : ''}
           </div>
           ${r.pago === 'pendiente' && r.estado !== 'anulada' ? `<a href="pago.html?reserva=${r.id}" class="btn-primary w-full mt-4 text-sm">Pagar ahora</a>` : ''}
         </div>
